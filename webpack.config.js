@@ -33,7 +33,8 @@ module.exports = {
     new HTMLWebpackPlugin({
       filename: "index.html",
       template: "./src/index.html",
-    },{
+    }),
+    new HTMLWebpackPlugin({
       filename: "login.html",
       template: "./src/login.html",
     }),
