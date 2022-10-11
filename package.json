@@ -20,6 +20,7 @@
   "homepage": "https://github.com/demong89/reform_old_project#readme",
   "dependencies": {
     "cm_addlongname": "^1.0.8",
+    "html-webpack-plugin": "^5.5.0",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
   }
