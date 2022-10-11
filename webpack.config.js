@@ -33,6 +33,9 @@ module.exports = {
     new HTMLWebpackPlugin({
       filename: "index.html",
       template: "./src/index.html",
+    },{
+      filename: "login.html",
+      template: "./src/login.html",
     }),
     new webpack.ProvidePlugin({
       $:'jquery',
