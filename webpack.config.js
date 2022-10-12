@@ -1,12 +1,15 @@
 const path = require("path");
-const webpack = require('webpack')
+const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: {
+    index: "./src/index.js",
+    login: "./src/login.js",
+  },
   output: {
-    filename: "bundle.js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "./dist"),
   },
   module: {
@@ -33,14 +36,16 @@ module.exports = {
     new HTMLWebpackPlugin({
       filename: "index.html",
       template: "./src/index.html",
+      chunks:['index']
     }),
     new HTMLWebpackPlugin({
       filename: "login.html",
       template: "./src/login.html",
+      chunks:['login']
     }),
     new webpack.ProvidePlugin({
-      $:'jquery',
-      jQuery:'jquery'
-    })
+      $: "jquery",
+      jQuery: "jquery",
+    }),
   ],
 };
