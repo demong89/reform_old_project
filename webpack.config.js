@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: "development",
@@ -11,6 +12,15 @@ module.exports = {
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "./dist"),
+  },
+  devServer:{
+    static:{
+      directory:path.join(__dirname,'dist')
+    },
+    compress:true,
+    port:9008,
+    hot:true,
+    open:true
   },
   module: {
     rules: [
@@ -27,7 +37,7 @@ module.exports = {
           },
         },
         generator: {
-          filename: "images/[name].[hash:6][ext]",
+          filename: "img/[name].[hash:6][ext]",
         },
       },
     ],
@@ -47,5 +57,13 @@ module.exports = {
       $: "jquery",
       jQuery: "jquery",
     }),
+    new CopyWebpackPlugin({
+      patterns:[
+        {
+          from:path.resolve(__dirname,'./src/img'),
+          to:path.resolve(__dirname,'./dist/img'),
+        }
+      ]
+    })
   ],
 };
