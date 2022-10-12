@@ -1,13 +1,26 @@
 const path = require("path");
-const webpack = require('webpack')
+const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: {
+    index: "./src/index.js",
+    login: "./src/login.js",
+  },
   output: {
-    filename: "bundle.js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "./dist"),
+  },
+  devServer:{
+    static:{
+      directory:path.join(__dirname,'dist')
+    },
+    compress:true,
+    port:9008,
+    hot:true,
+    open:true
   },
   module: {
     rules: [
@@ -24,7 +37,7 @@ module.exports = {
           },
         },
         generator: {
-          filename: "images/[name].[hash:6][ext]",
+          filename: "img/[name].[hash:6][ext]",
         },
       },
     ],
@@ -33,10 +46,24 @@ module.exports = {
     new HTMLWebpackPlugin({
       filename: "index.html",
       template: "./src/index.html",
+      chunks:['index']
+    }),
+    new HTMLWebpackPlugin({
+      filename: "login.html",
+      template: "./src/login.html",
+      chunks:['login']
     }),
     new webpack.ProvidePlugin({
-      $:'jquery',
-      jQuery:'jquery'
+      $: "jquery",
+      jQuery: "jquery",
+    }),
+    new CopyWebpackPlugin({
+      patterns:[
+        {
+          from:path.resolve(__dirname,'./src/img'),
+          to:path.resolve(__dirname,'./dist/img'),
+        }
+      ]
     })
   ],
 };
