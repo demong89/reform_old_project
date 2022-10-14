@@ -76,5 +76,17 @@ module.exports = {
   optimization: {
     minimize: true,
     minimizer: [new UglifyjsPlugin({ sourceMap: true }),new CssMinimizerPlugin()],
+    splitChunks:{
+      chunks:'all',
+      minSize:100 * 1024,
+      name:'common',
+      cacheGroups:{
+        jquery:{
+          name:'juery',
+          test:/jquery/, // 匹配名字
+          chunks:'all'
+        }
+      }
+    }
   },
 };
