@@ -4,7 +4,7 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyjsPlugin = require("uglifyjs-webpack-plugin");
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -43,6 +43,13 @@ module.exports = {
           filename: "img/[name].[hash:6][ext]",
         },
       },
+      {
+        test:/\.ejs$/,
+        loader:'ejs-loader',
+        options:{
+          esModule:false
+        }
+      }
     ],
   },
   plugins: [
@@ -75,18 +82,27 @@ module.exports = {
   ],
   optimization: {
     minimize: true,
-    minimizer: [new UglifyjsPlugin({ sourceMap: true }),new CssMinimizerPlugin()],
-    splitChunks:{
-      chunks:'all',
-      minSize:100 * 1024,
-      name:'common',
-      cacheGroups:{
-        jquery:{
-          name:'juery',
-          test:/jquery/, // 匹配名字
-          chunks:'all'
-        }
-      }
-    }
+    minimizer: [
+      new UglifyjsPlugin({ sourceMap: true }),
+      new CssMinimizerPlugin(),
+    ],
+    splitChunks: {
+      chunks: "all",
+      minSize: 100 * 1024,
+      name: "common",
+      cacheGroups: {
+        jquery: {
+          name: "juery",
+          test: /jquery/, // 匹配名字
+          chunks: "all",
+        },
+
+        "loadash-es": {
+          name: "loadash-es",
+          test: /loadash-es/, // 匹配名字
+          chunks: "all",
+        },
+      },
+    },
   },
 };
