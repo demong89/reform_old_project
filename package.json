@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server",
-    "build": "webpack",
+    "build": "webpack --config build/webpack.config.js",
     "git": "git status && git add . && cm_addlongname && git push"
   },
   "repository": {
