@@ -61,11 +61,11 @@ const config = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    // new HTMLWebpackPlugin({
-    //   filename: "index.html",
-    //   template: "./src/index.html",
-    //   chunks: ["index"],
-    // }),
+    new HTMLWebpackPlugin({
+      filename: "index.html",
+      template: path.resolve(__dirname,"../public/index.html"),
+      chunks: ["index"],
+    }),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",

@@ -7,7 +7,7 @@
 					<h1 class="fl"><a href="index.html"><img src="img/logo.png"/></a></h1>
 					<div class="fr clearfix" id="top1">
 						<p class="fl">
-							<a href="#" id="login">登录1234</a>
+							<a @click="jumpToLogin" id="login">登录1234</a>
 							<a href="#" id="reg">注册</a>
 						</p>
 						<form action="#" method="get" class="fl">
@@ -407,7 +407,6 @@
 	</div>
 </template>
 <script>
-import './css/public.css'
 import './css/index.css'
 
 
@@ -416,6 +415,10 @@ import './js/public'
 import './js/nav'
 
 export default {
-  
+  methods:{
+    jumpToLogin(){
+      this.$router.push('/login')
+    }
+  }
 }
 </script>
