@@ -10,6 +10,8 @@
     "build:mpa": "webpack --config build/webpack.vue.mpa.config.js",
     "start:mpa": "webpack-dev-server --config build/webpack.vue.mpa.config.js",
     "start:vue": "webpack-dev-server --config build/webpack.vue.config.js",
+    "start:vue3": "webpack-dev-server --config build/webpack.vue3.config.js",
+
     "git": "git status && git add . && cm_addlongname && git push"
   },
   "repository": {
@@ -29,9 +31,9 @@
     "flexslider": "^2.7.2",
     "html-webpack-plugin": "^5.5.0",
     "jquery": "^3.6.1",
-    "vue": "2.x",
-    "vue-loader": "^15.0.0",
-    "vue-router": "3",
+    "vue": "^3.0.0",
+    "vue-loader": "^16.0.0",
+    "vue-router": "^4.0.0",
     "vue-template-compiler": "^2.7.13",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
