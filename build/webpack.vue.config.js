@@ -7,13 +7,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyjsPlugin = require("uglifyjs-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
-console.log(22222222222222);
-const VueLoaderPlugin = require("vue-loader/dist/plugin").default
+const VueLoaderPlugin = require("vue-loader/lib/plugin")
 
-
-
-
-console.log('[VueLoaderPlugin:]',VueLoaderPlugin);
 
 
 const config = {
@@ -66,11 +61,11 @@ const config = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new HTMLWebpackPlugin({
-      filename: "index.html",
-      template: "./src/index.html",
-      chunks: ["index"],
-    }),
+    // new HTMLWebpackPlugin({
+    //   filename: "index.html",
+    //   template: "./src/index.html",
+    //   chunks: ["index"],
+    // }),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
@@ -98,7 +93,7 @@ const config = {
     splitChunks: {
       chunks: "all",
       minSize: 100 * 1024,
-      name: "common222",
+      name: "common",
       cacheGroups: {
         jquery: {
           name: "juery",

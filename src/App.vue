@@ -1,9 +1,11 @@
 <template>
-  <div id="id">{{message}}</div>
+  <Home></Home>
 </template>
 
 <script>
+import Home from './Home.vue'
 export default{
+   components:{Home},
   data(){
     return {
       message:'Vue项目'
